@@ -7,8 +7,23 @@ const url = 'https://blog.facialix.com/category/cupones/'
 
 router.get('/',async (req,res) =>{
     try{
+        res.setHeader('Content-type', 'text/event-stream')
+        res.setHeader('Access-Control-Allow-Origin', '*')
+
         const jsonContent =JSON.stringify(await getPromos())
         res.json(jsonContent)
+
+        const intervalId = setInterval(async() => {
+            const jsonContent =JSON.stringify(await getPromos())
+            res.json(jsonContent)
+        }, 60000)
+
+        res.on('close', () => {
+            console.log('Connection closed')
+            clearInterval(intervalId)
+            res.end()
+        })
+        
     }catch(err){
         console.log(err)
         return res.status(500).send('Server error')
