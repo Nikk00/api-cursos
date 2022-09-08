@@ -7,7 +7,8 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.json({ extended: false}))
 
-app.use('/api/cursos', cursos)
+app.get('/api/cursos', cursos.getAllCurse)
+app.get('/api/cursos/:id', cursos.getOneCurse)
 
 const PORT = process.env.PORT || 8080;
 
