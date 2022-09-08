@@ -11,11 +11,11 @@ router.get('/',async (req,res) =>{
         res.setHeader('Access-Control-Allow-Origin', '*')
 
         const jsonContent =JSON.stringify(await getPromos())
-        res.json(jsonContent)
+        res.write(jsonContent)
 
         const intervalId = setInterval(async() => {
             const jsonContent =JSON.stringify(await getPromos())
-            res.json(jsonContent)
+            res.write(jsonContent)
         }, 60000)
 
         res.on('close', () => {
