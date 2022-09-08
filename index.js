@@ -3,6 +3,7 @@ const app = express()
 const cursos = require('./api/cursos')
 const cors = require('cors')
 
+
 app.use(cors())
 app.use(express.json({ extended: false}))
 
