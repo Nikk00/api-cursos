@@ -8,7 +8,7 @@ const url = 'https://blog.facialix.com/category/cupones/'
 router.get('/',async (req,res) =>{
     try{
         const jsonContent =JSON.stringify(await getPromos())
-        res.write(jsonContent)
+        res.json(jsonContent)
     }catch(err){
         console.log(err)
         return res.status(500).send('Server error')
