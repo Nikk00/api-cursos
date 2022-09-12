@@ -28,7 +28,7 @@ function getPromos(){
         const articles = []
         const html = res.data
         const $ = cheerio.load(html)
-        $('.post-title', html).each(function () {
+        $('.blog-entry-title', html).each(function () {
             const title = $(this).find('a').text()
             const url = $(this).find('a').attr('href')
             articles.push({
@@ -46,7 +46,6 @@ function getPromosId(id){
         var articles
         const html = res.data
         const $ = cheerio.load(html)
-
         $('.wp-container-2, .is-content-justification-center, .wp-block-buttons', html).each(function () {
             const url = $(this).find('a').attr('href')
             articles = {
