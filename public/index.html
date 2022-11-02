@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <title>API Cursos</title>
+  </head>
+  <body class="bg-black max-h-screen font-mono">
+    <header class="flex justify-center">
+        <h1 class="text-5xl font-bold text-white mt-5">API Cursos</h1>
+    </header>
+    <main class="grid grid-cols-1">
+        <div class="bg-slate-500 bg-opacity-50 rounded-lg place-self-center mt-10 px-10 pt-5 pb-10">
+            <h1 class="font-bold text-center text-white text-3xl">Documentación</h1>
+            <h1 class="font-bold text-white text-xl mt-1 underline decoration-sky-500">REST</h1>
+            <p class="text-white">La URL base contiene todos los cursos disponibles. 
+                Todas las solicitudes son <code class="text-black font-bold">GET</code> solicitudes y repasan https. Todas las respuestas devolverán datos en formato <code class="text-black font-bold">JSON</code>.
+            </p>
+            <pre class="bg-black text-white h-16 flex items-center p-5 mt-2 rounded-md">
+                <code class="text-red-500">GET</code> <code> https://api-cursos.vercel.app/api/cursos</code>
+            </pre>
+            <pre class="bg-black text-white flex mt-2 pb-5 rounded-md">
+                <code class="text-yellow-500">
+                {
+                    <code class="text-green-500">"title"</code>: <code class="text-sky-500">String</code>,
+                    <code class="text-green-500">"url"</code>: <code class="text-sky-500">String</code>,
+                    <code class="text-green-500">"urlTitle"</code>: <code class="text-sky-500">String</code>
+                }</code>
+            </pre>
+            <h1 class="font-bold text-white text-xl mt-10 underline decoration-sky-500">CONSIGUE UN SOLO CURSO</h1>
+            <p class="text-white">
+            Puedes obtener un solo <code class="text-black font-bold">curso</code> agregando <code class="text-black font-bold">urlTitle</code> como parámetro: <code class="text-gray-400 font-bold">/cursos/urlTitle</code>
+            </p>
+            <pre class="bg-black text-white h-16 flex items-center p-5 mt-2 rounded-md">
+                <code class="text-red-500">GET</code> <code> https://api-cursos.vercel.app/api/cursos/<code class="text-green-500">:urlTitle</code></code>
+            </pre>
+            <pre class="bg-black text-white flex mt-2 pb-5 rounded-md">
+                <code class="text-yellow-500">
+                {
+                    <code class="text-green-500">"url"</code>: <code class="text-sky-500">String</code>
+                }</code>
+            </pre>
+        </div>
+    </main>
+  </body>
+</html>

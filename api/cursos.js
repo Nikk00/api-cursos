@@ -5,7 +5,7 @@ const url = 'https://blog.facialix.com/category/cupones/'
 
 const getAllCurse = async (req,res) =>{
     try{
-        res.json(await getPromos())
+        return res.status(200).json(await getPromos())
     }catch(err){
         console.log(err)
         return res.status(500).send('Server error')
@@ -16,13 +16,12 @@ const getOneCurse = async (req,res) =>{
     const urlArray = id.toString()
     const data = await getPromosId(urlArray)
     try{
-        res.json(data)
+        return res.status(200).json(data)
     }catch(err){
         console.log(err)
         return res.status(500).send('Server error')
     }
 }
-
 function getPromos(){
     const aux = axios(url).then(res =>{
         const articles = []
@@ -31,9 +30,11 @@ function getPromos(){
         $('.blog-entry-title', html).each(function () {
             const title = $(this).find('a').text()
             const url = $(this).find('a').attr('href')
+            const urlTitle = url.slice(26,-1)
             articles.push({
                 title,
-                url
+                url,
+                urlTitle
             })
         })
         return articles
